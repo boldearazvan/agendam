@@ -4,7 +4,6 @@ import HeaderItem from '../../ui/components/headerItem';
 import './nav.css';
 
 
-
 class Nav extends React.Component {
     constructor(props){
         super(props);
