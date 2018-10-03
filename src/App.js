@@ -15,35 +15,20 @@ class App extends Component {
     };
 
 
-    showContent = () => {
-
-    };
-
-
-
   render() {
 
-    const mainMenuItems = [{title:'Agenda', href:'/agenda', showContent:this.showContent}, {title:'Calendar', href:'/calendar', showContent:this.showContent}];
+    const mainMenuItems = [{title:'Agenda', href:'/agenda'}, {title:'Calendar', href:'/calendar'}];
 
-    // store.dispatch(displayContent('Agenda'));
-    // store.dispatch(displayContent('Calendar'));
 
-    //   store.dispatch({
-    //       type: 'DISPLAY_CONTENT',
-    //       payload: 'Calendar'
-    //   });
-
-    console.log('store.GetState: ',store.getState());
-    console.log('app props: ', this.props);
 
     return (
           <div className="App">
               <Header items={mainMenuItems} someProps={this.props}/>
 
-
-
-              {store.getState().displayContent === 'Agenda' && <div>Agenda</div>}
-              {store.getState().displayContent === 'Calendar' && <div>Calendar</div>}
+              <div className="contentContainer">
+                  {store.getState().displayContent === 'Agenda' && <div>Agenda</div>}
+                  {store.getState().displayContent === 'Calendar' && <div>Calendar</div>}
+              </div>
           </div>
     );
   };
@@ -51,15 +36,10 @@ class App extends Component {
 
 function mapStateToProps(state){
     return {
-        displayContent : state.displayContent
+        displayContent : state.displayContent,
+        displayContentHandler: displayContent
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        dispatchDisplayContent: () => dispatch({type: 'DISPLAY_CONTENT'})
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default App;
+export default connect(mapStateToProps)(App);

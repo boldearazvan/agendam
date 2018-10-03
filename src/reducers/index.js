@@ -1,8 +1,4 @@
-// const agenda = 'Agenda';
-// const calendar = 'Calendar';
-
 function displayContent(content){
-    console.log('content: ',content);
     return {
         type: 'DISPLAY_CONTENT',
         payload: content
@@ -17,7 +13,7 @@ const initialState ={
 function rootReducer(state = initialState, action) {
 
     console.log('rootReducer initialState: ', state);
-    console.log('action: ', action);
+    console.log('action::: ', action);
 
     switch (action.type){
         case 'DISPLAY_CONTENT':

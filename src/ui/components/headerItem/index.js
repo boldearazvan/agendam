@@ -10,7 +10,7 @@ class HeaderItem extends React.Component{
             <a
                 className={this.props.active ? 'nav-link active' : 'nav-link'}
                 href={this.props.item.href}
-                onClick={(e) => {e.preventDefault(); this.props.onClick(this.props.item.title); this.props.showContent(this.props.item.title)}}
+                onClick={(e) => {e.preventDefault(); this.props.onClick(this.props.item.title); }}
             >
                 {this.props.item.title}
             </a>

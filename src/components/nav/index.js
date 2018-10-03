@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderItem from '../../ui/components/headerItem';
-
+import store from '../../store';
 import './nav.css';
 
 
@@ -9,13 +9,13 @@ class Nav extends React.Component {
     constructor(props){
         super(props);
         console.log('nav received props: ',props);
-        // this.state = {activeTab: 'Agenda'};
     };
 
     activateTab = (tabTitle) => {
-        // this.setState({activeTab: tabTitle});
-        //dispatch
+        console.log('tabTitle: ',tabTitle);
+        this.props.dispatch(this.props.makeActive(tabTitle));
     };
+
 
     render() {
         console.log(this.props);
@@ -24,11 +24,10 @@ class Nav extends React.Component {
             <ul className="nav nav-tabs">
                 {
                     items.map((item) =>  <HeaderItem
-                        active={this.props.activeTab === item.title ? true : false}
+                        active={store.getState().displayContent === item.title ? true : false}
                         key={item.title}
                         item={item}
                         onClick={this.activateTab}
-                        showContent={item.showContent}
                     />)
                 }
             </ul>);
